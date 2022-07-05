@@ -28,16 +28,19 @@ class FileInfoCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Container(
-                padding: EdgeInsets.all(defaultPadding * 0.75),
+                padding: EdgeInsets.all(defaultPadding * 0.2),
                 height: 40,
                 width: 40,
                 decoration: BoxDecoration(
                   color: info.color!.withOpacity(0.1),
                   borderRadius: const BorderRadius.all(Radius.circular(10)),
                 ),
-                child: SvgPicture.asset(
-                  info.svgSrc!,
-                  color: info.color,
+                child: Image(
+                  image: AssetImage(
+                    info.imageSrc!,
+                  ),
+                  height: 80,
+                  width: 80,
                 ),
               ),
               Icon(Icons.more_vert, color: Colors.white54)
@@ -56,18 +59,11 @@ class FileInfoCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                "${info.numOfFiles} Files",
+                "${info.numOfFiles} Student",
                 style: Theme.of(context)
                     .textTheme
                     .caption!
                     .copyWith(color: Colors.white70),
-              ),
-              Text(
-                info.totalStorage!,
-                style: Theme.of(context)
-                    .textTheme
-                    .caption!
-                    .copyWith(color: Colors.white),
               ),
             ],
           )

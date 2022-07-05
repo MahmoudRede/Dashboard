@@ -7,12 +7,11 @@ class StorageInfoCard extends StatelessWidget {
   const StorageInfoCard({
     Key? key,
     required this.title,
-    required this.svgSrc,
-    required this.amountOfFiles,
+    required this.imageSrc,
     required this.numOfFiles,
   }) : super(key: key);
 
-  final String title, svgSrc, amountOfFiles;
+  final String title, imageSrc;
   final int numOfFiles;
 
   @override
@@ -31,7 +30,13 @@ class StorageInfoCard extends StatelessWidget {
           SizedBox(
             height: 20,
             width: 20,
-            child: SvgPicture.asset(svgSrc),
+            child: Image(
+              image: AssetImage(
+                imageSrc,
+              ),
+              height: 80,
+              width: 80,
+            ),
           ),
           Expanded(
             child: Padding(
@@ -45,7 +50,7 @@ class StorageInfoCard extends StatelessWidget {
                     overflow: TextOverflow.ellipsis,
                   ),
                   Text(
-                    "$numOfFiles Files",
+                    "$numOfFiles Student",
                     style: Theme.of(context)
                         .textTheme
                         .caption!
@@ -55,7 +60,6 @@ class StorageInfoCard extends StatelessWidget {
               ),
             ),
           ),
-          Text(amountOfFiles)
         ],
       ),
     );

@@ -12,46 +12,55 @@ class SideMenu extends StatelessWidget {
       child: ListView(
         children: [
           DrawerHeader(
-            child: Image.asset("assets/images/logo.png"),
+            child: CircleAvatar(
+              radius: 100,
+              backgroundColor: Colors.white,
+              backgroundImage : AssetImage("assets/images/Logo.jpg"),
+            ),
           ),
           DrawerListTile(
-            title: "Dashboard",
-            svgSrc: "assets/icons/menu_dashbord.svg",
+            title: "Users Accounts",
+            listIcon: Icons.person,
             press: () {},
           ),
           DrawerListTile(
-            title: "Transaction",
-            svgSrc: "assets/icons/menu_tran.svg",
+            title: "Professors",
+            listIcon: Icons.person,
             press: () {},
           ),
           DrawerListTile(
-            title: "Task",
-            svgSrc: "assets/icons/menu_task.svg",
+            title: "General Students",
+            listIcon: Icons.person,
             press: () {},
           ),
           DrawerListTile(
-            title: "Documents",
-            svgSrc: "assets/icons/menu_doc.svg",
+            title: "Medical Students",
+            listIcon: Icons.person,
             press: () {},
           ),
           DrawerListTile(
-            title: "Store",
-            svgSrc: "assets/icons/menu_store.svg",
+            title: "Security Students",
+            listIcon: Icons.person,
             press: () {},
           ),
           DrawerListTile(
-            title: "Notification",
-            svgSrc: "assets/icons/menu_notification.svg",
+            title: "Network Students",
+            listIcon: Icons.person,
             press: () {},
           ),
           DrawerListTile(
-            title: "Profile",
-            svgSrc: "assets/icons/menu_profile.svg",
+            title: "Home Posts",
+            listIcon: Icons.post_add,
             press: () {},
           ),
           DrawerListTile(
-            title: "Settings",
-            svgSrc: "assets/icons/menu_setting.svg",
+            title: "Students groups",
+            listIcon: Icons.group,
+            press: () {},
+          ),
+          DrawerListTile(
+            title: "Students Material",
+            listIcon: Icons.book,
             press: () {},
           ),
         ],
@@ -65,11 +74,12 @@ class DrawerListTile extends StatelessWidget {
     Key? key,
     // For selecting those three line once press "Command+D"
     required this.title,
-    required this.svgSrc,
+    required this.listIcon,
     required this.press,
   }) : super(key: key);
 
-  final String title, svgSrc;
+  final String title;
+  final IconData listIcon;
   final VoidCallback press;
 
   @override
@@ -77,10 +87,9 @@ class DrawerListTile extends StatelessWidget {
     return ListTile(
       onTap: press,
       horizontalTitleGap: 0.0,
-      leading: SvgPicture.asset(
-        svgSrc,
+      leading: Icon(
+        listIcon,
         color: Colors.white54,
-        height: 16,
       ),
       title: Text(
         title,
